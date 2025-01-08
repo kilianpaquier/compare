@@ -15,8 +15,8 @@ var carriage = []byte{13}
 
 // Dirs compares expected an actual directories (and their subdirectories).
 //
-// It returns an join'ed slice of errors if there're differencies.
-// Differencies are wrapped in CompareError implementation of error.
+// It returns an join'ed slice of errors if there're differences.
+// Differences are wrapped in CompareError implementation of error.
 //
 // Carriage character '\r' is removed from contents before comparison
 // to get success results when comparing the same file between windows and linux.

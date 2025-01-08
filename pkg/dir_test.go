@@ -49,7 +49,7 @@ func TestDirs(t *testing.T) {
 				if err == nil {
 					t.FailNow()
 				}
-				if !strings.Contains(err.Error(), fmt.Sprintf("missing file 'missing.txt' from %s", tc)) {
+				if !strings.Contains(err.Error(), "missing file 'missing.txt' from "+tc) {
 					t.Fatal(err)
 				}
 			})
@@ -91,7 +91,6 @@ func TestDirs(t *testing.T) {
 
 		// Act
 		err := compare.Dirs(expected, actual)
-
 		// Assert
 		if err != nil {
 			t.Fatal(err)

@@ -50,7 +50,6 @@ func TestFiles(t *testing.T) {
 
 				// Act
 				err := compare.Files(expected, actual)
-
 				// Assert
 				if err != nil {
 					t.Fatal(err)
