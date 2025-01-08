@@ -6,6 +6,7 @@ ci:
     release: github-token
   name: github
   options:
+    - codecov
     - codeql
   release: {}
 license: mit

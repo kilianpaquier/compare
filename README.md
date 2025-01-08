@@ -4,6 +4,7 @@
   <img alt="GitHub Release" src="https://img.shields.io/github/v/release/kilianpaquier/compare?include_prereleases&sort=semver&style=for-the-badge">
   <img alt="GitHub Issues" src="https://img.shields.io/github/issues-raw/kilianpaquier/compare?style=for-the-badge">
   <img alt="GitHub License" src="https://img.shields.io/github/license/kilianpaquier/compare?style=for-the-badge">
+  <img alt="Coverage" src="https://img.shields.io/codecov/c/github/kilianpaquier/compare/main?style=for-the-badge">
   <img alt="Go Version" src="https://img.shields.io/github/go-mod/go-version/kilianpaquier/compare/main?style=for-the-badge&label=Go+Version">
   <img alt="Go Report Card" src="https://goreportcard.com/badge/github.com/kilianpaquier/compare?style=for-the-badge">
 </p>
