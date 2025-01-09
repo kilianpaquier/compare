@@ -25,9 +25,6 @@ func TestFiles(t *testing.T) {
 				err := compare.Files(expected, actual)
 
 				// Assert
-				if err == nil {
-					t.FailNow()
-				}
 				ce := &compare.Error{}
 				if !errors.As(err, &ce) {
 					t.Fatal(err)
@@ -48,9 +45,8 @@ func TestFiles(t *testing.T) {
 				expected := filepath.Join(testdata, "expected.txt")
 				actual := filepath.Join(testdata, "actual.txt")
 
-				// Act
+				// Act & Assert
 				err := compare.Files(expected, actual)
-				// Assert
 				if err != nil {
 					t.Fatal(err)
 				}
