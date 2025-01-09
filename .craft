@@ -8,7 +8,8 @@ ci:
   options:
     - codecov
     - codeql
-  release: {}
+  release:
+    auto: true
 license: mit
 maintainers:
   - name: kilianpaquier

@@ -108,7 +108,7 @@ jobs:
   release:
     name: Release
     runs-on: ubuntu-latest
-    if: ${{ github.event_name == 'workflow_dispatch' && github.ref_protected }}
+    if: ${{ github.event_name != 'pull_request' && github.ref_protected }}
     environment:
       name: release
       url: ${{ steps.environment_url.outputs.environment_url }}
