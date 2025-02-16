@@ -10,8 +10,8 @@ import (
 	"github.com/rogpeppe/go-internal/diff"
 )
 
-// carriage represents the \r character in byte format.
-var carriage = []byte{13}
+// Carriage represents the \r character in byte format.
+var Carriage = []byte{13}
 
 // Dirs compares expected an actual directories (and their subdirectories).
 //
@@ -114,7 +114,7 @@ func readDir(initialdir string, currentdir string) (map[string][]byte, error) {
 			errs = append(errs, fmt.Errorf("relative path: %w", err))
 			continue
 		}
-		files[rel] = bytes.ReplaceAll(content, carriage, []byte{})
+		files[rel] = bytes.ReplaceAll(content, Carriage, []byte{})
 	}
 	return files, errors.Join(errs...)
 }

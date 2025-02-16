@@ -18,7 +18,7 @@ func Files(expected, actual string) error {
 	expectedContent, _ := os.ReadFile(expected)
 	actualContent, _ := os.ReadFile(actual)
 
-	diffs := diff.Diff(expected, bytes.ReplaceAll(expectedContent, carriage, []byte{}), actual, bytes.ReplaceAll(actualContent, carriage, []byte{}))
+	diffs := diff.Diff(expected, bytes.ReplaceAll(expectedContent, Carriage, []byte{}), actual, bytes.ReplaceAll(actualContent, Carriage, []byte{}))
 	if len(diffs) > 0 {
 		return &Error{diffs}
 	}
