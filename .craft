@@ -10,8 +10,9 @@ ci:
     - codeql
   release:
     auto: true
+exclude:
+  - chart
 license: mit
 maintainers:
   - name: kilianpaquier
-no_chart: true
 platform: github
