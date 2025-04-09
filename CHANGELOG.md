@@ -1,3 +1,9 @@
+## [1.0.3](https://github.com/kilianpaquier/compare/compare/v1.0.2...v1.0.3) (2025-04-09)
+
+### Chores
+
+* **deps:** upgrade dependencies ([2e175bd](https://github.com/kilianpaquier/compare/commit/2e175bd36cc155ff350e775d671f5af7b1520564))
+
 ## [1.0.2](https://github.com/kilianpaquier/compare/compare/v1.0.1...v1.0.2) (2025-02-24)
 
 ### Chores
