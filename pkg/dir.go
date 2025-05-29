@@ -6,8 +6,6 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
-
-	"github.com/rogpeppe/go-internal/diff"
 )
 
 // Carriage represents the \r character in byte format.
@@ -16,7 +14,7 @@ var Carriage = []byte{13}
 // Dirs compares expected an actual directories (and their subdirectories).
 //
 // It returns an join'ed slice of errors if there're differences.
-// Differences are wrapped in CompareError implementation of error.
+// Differences are wrapped in Error implementation of error.
 //
 // Carriage character '\r' is removed from contents before comparison
 // to get success results when comparing the same file between windows and linux.
@@ -53,10 +51,7 @@ func Dirs(expected, actual string) error {
 			errs = append(errs, fmt.Errorf("missing file '%s' from actual", file))
 			continue
 		}
-
-		if diffs := diff.Diff(file, expectedBytes, file, actualBytes); len(diffs) > 0 {
-			errs = append(errs, &Error{diffs})
-		}
+		errs = append(errs, contents(file, file, expectedBytes, actualBytes))
 	}
 
 	// check that there're no actual files that aren't present in expected files
@@ -65,6 +60,8 @@ func Dirs(expected, actual string) error {
 			errs = append(errs, fmt.Errorf("missing file '%s' from expected", file))
 		}
 	}
+
+	// Join takes care of removing nil errors and returning nil in case all errors were nil
 	return errors.Join(errs...)
 }
 

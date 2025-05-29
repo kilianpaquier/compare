@@ -90,7 +90,7 @@ jobs:
       - run: mkdir -p reports/
       - uses: golangci/golangci-lint-action@v8
         with:
-          args: --config .golangci.yml --timeout 240s --allow-parallel-runners --output.checkstyle.path reports/go-ci-lint.checkstyle.xml --output.text.path stdout
+          args: --config .golangci.yml --timeout 240s --allow-parallel-runners --output.checkstyle.path "reports/go-ci-lint.checkstyle.xml" --output.text.path stdout
 
   go-test:
     name: Go Test
@@ -111,7 +111,25 @@ jobs:
           go-version-file: go.mod
           token: ${{ secrets.GITHUB_TOKEN }}
       - run: mkdir -p reports/
-      - run: go test ./... -coverpkg="./..." -covermode="count" -coverprofile="reports/go-coverage.native.out" -timeout=15s
+      - run: |-
+          go test ./... -v -coverpkg="./..." -covermode="count" -coverprofile="reports/go-coverage.native.out" -timeout=15s | tee "reports/tests.log"
+      - shell: bash
+        run: |-
+          go run github.com/jstemmer/go-junit-report/v2@latest -in "reports/tests.log" -out "reports/go-test.xunit.xml"
+          go tool test2json < "reports/tests.log" > "reports/go-test.native.json"
+      - if: ${{ !cancelled() }}
+        uses: codecov/test-results-action@v1
+        with:
+          codecov_yml_path: .codecov.yml
+          disable_search: true
+          env_vars: OS
+          fail_ci_if_error: false
+          files: reports/go-test.xunit.xml
+          flags: ${{ matrix.os }}
+          slug: ${{ github.repository }}
+          token: ${{ secrets.CODECOV_TOKEN }}
+        env:
+          OS: ${{ matrix.os }}
       - uses: codecov/codecov-action@v5
         with:
           codecov_yml_path: .codecov.yml
