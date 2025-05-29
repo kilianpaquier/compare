@@ -62,6 +62,14 @@ Examples:
 		err := compare.Dirs(expected, actual)
 		// handle err
 	}
+
+	func main() {
+		expected := "expected content (only useful on multiline contents with the desire to get a pretty diff)"
+		actual := "actual content (only useful on multiline contents with the desire to get a pretty diff)"
+
+		err := compare.Contents(expected, actual)
+		// handle err
+	}
 */
 package compare
 ```

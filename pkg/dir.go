@@ -44,7 +44,7 @@ func Dirs(expected, actual string) error {
 	}
 
 	// check all expected contents against actual contents
-	var errs []error
+	var errs []error //nolint:prealloc
 	for file, expectedBytes := range expectedFiles {
 		actualBytes, ok := actualFiles[file]
 		if !ok {
