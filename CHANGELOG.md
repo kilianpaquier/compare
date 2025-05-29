@@ -1,3 +1,9 @@
+## [1.1.0](https://github.com/kilianpaquier/compare/compare/v1.0.3...v1.1.0) (2025-05-29)
+
+### Features
+
+* add Contents function to compare bytes slice directly ([d6f19c8](https://github.com/kilianpaquier/compare/commit/d6f19c8eeef174a6bf3a08668e524ec0517672df))
+
 ## [1.0.3](https://github.com/kilianpaquier/compare/compare/v1.0.2...v1.0.3) (2025-04-09)
 
 ### Chores
