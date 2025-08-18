@@ -87,7 +87,7 @@ jobs:
       pull-requests: write
       id-token: none
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           fetch-depth: 0
       # https://github.com/marketplace/actions/action-for-semantic-release
@@ -136,7 +136,7 @@ jobs:
       pull-requests: write
       id-token: none
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           fetch-depth: 0
       # https://github.com/marketplace/actions/action-for-semantic-release
