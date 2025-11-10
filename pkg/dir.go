@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"errors"
 	"fmt"
+	"maps"
 	"os"
 	"path/filepath"
 )
@@ -87,9 +88,7 @@ func readDir(initialdir string, currentdir string) (map[string][]byte, error) {
 				continue
 			}
 
-			for filename, content := range sub {
-				files[filename] = content
-			}
+			maps.Copy(files, sub)
 			continue
 		}
 
