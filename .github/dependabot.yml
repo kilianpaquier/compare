@@ -11,11 +11,17 @@ updates:
 
   - package-ecosystem: gomod
     directory: /
+    labels:
+      - dependabot
+      - dependencies
     schedule:
       interval: daily
       time: "12:00"
       timezone: "Etc/UTC"
     groups:
+      major:
+        update-types:
+          - major
       minor/patch:
         update-types:
           - minor
