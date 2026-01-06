@@ -10,5 +10,5 @@ dependencies:
   manager: renovate
 license: mit
 maintainers:
-  - name: kilianpaquier
+  - name: u.kilianpaquier
 platform: gitlab

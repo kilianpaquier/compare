@@ -6,25 +6,25 @@ include:
   # pre-commit template
   # https://gitlab.com/to-be-continuous/pre-commit
   - project: to-be-continuous/pre-commit
-    ref: d56e5eb8bc1cf6f038a863678442c50104a3244e # 1.4.0
+    ref: 85ef9be998d1cbabe018eb1b293c09c0c07d448c # 1.4.1
     file: templates/gitlab-ci-pre-commit.yml
 
   # Go template
   # https://gitlab.com/to-be-continuous/golang
   - project: to-be-continuous/golang
-    ref: f7becc9b732e3c70e4c62ec7e4fedc13134898b6 # 4.15.0
+    ref: 156a4275a22b839532e8c6acb825b8cadc065103 # 4.15.1
     file: templates/gitlab-ci-golang.yml
 
 variables:
   PRE_COMMIT_FILE: .pre-commit-config.yaml
 
   GO_CI_LINT_ARGS: --config=.golangci.yml --timeout=240s --allow-parallel-runners --output.checkstyle.path="reports/go-ci-lint.checkstyle.xml" --output.text.path=stdout
-  GO_CI_LINT_IMAGE: docker.io/golangci/golangci-lint:latest-alpine
-  GO_IMAGE: docker.io/library/golang:latest
+  GO_CI_LINT_IMAGE: docker.io/golangci/golangci-lint:v2.7.2-alpine
+  GO_IMAGE: docker.io/library/golang:1.25.4
   GO_OUTDATED_DISABLED: "false" # https://github.com/psampaz/go-mod-outdated
   GO_SBOM_DISABLED: "true"
   GO_TEST_FLAGS: -v -coverpkg=./... -covermode=count -timeout=30s
-  GO_TEST_IMAGE: docker.io/library/golang:latest
+  GO_TEST_IMAGE: docker.io/library/golang:1.25.4
 
 go-build:
   rules:
