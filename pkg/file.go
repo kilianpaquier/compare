@@ -47,7 +47,7 @@ func Files(expected, actual string) error {
 //
 // Carriage character '\r' is removed from contents before comparison
 // to get success results when comparing the same file between windows and linux.
-func contents(ename, aname string, expected, actual []byte) error { //nolint:revive
+func contents(ename, aname string, expected, actual []byte) error { //nolint:revive // same name as exported function (don't care)
 	diffs := diff.Diff(ename, bytes.ReplaceAll(expected, Carriage, []byte{}), aname, bytes.ReplaceAll(actual, Carriage, []byte{}))
 	if len(diffs) > 0 {
 		return &Error{diffs}
