@@ -3,9 +3,9 @@ package compare_test
 import (
 	"fmt"
 	"path/filepath"
-	"strings"
 	"testing"
 
+	"github.com/kilianpaquier/compare/internal/testutils"
 	compare "github.com/kilianpaquier/compare/pkg"
 )
 
@@ -24,12 +24,8 @@ func TestDirs(t *testing.T) {
 				err := compare.Dirs(expected, actual)
 
 				// Assert
-				if err == nil {
-					t.FailNow()
-				}
-				if !strings.Contains(err.Error(), "read dir") {
-					t.Fatal(err)
-				}
+				testutils.Error(testutils.Require(t), err)
+				testutils.Contains(t, err.Error(), "read dir")
 			})
 		}
 	})
@@ -46,12 +42,8 @@ func TestDirs(t *testing.T) {
 				err := compare.Dirs(expected, actual)
 
 				// Assert
-				if err == nil {
-					t.FailNow()
-				}
-				if !strings.Contains(err.Error(), "missing file 'missing.txt' from "+tc) {
-					t.Fatal(err)
-				}
+				testutils.Error(testutils.Require(t), err)
+				testutils.Contains(t, err.Error(), "missing file 'missing.txt' from "+tc)
 			})
 		}
 	})
@@ -72,14 +64,10 @@ func TestDirs(t *testing.T) {
 		err := compare.Dirs(expected, actual)
 
 		// Assert
-		if err == nil {
-			t.Fatal(err)
-		}
+		testutils.Error(testutils.Require(t), err)
 		// small verification, there's no need for more since comparison result is handled by Golang diff library
 		for _, file := range files {
-			if !strings.Contains(err.Error(), fmt.Sprintf("diff %s %s", file, file)) {
-				t.Error(fmt.Sprintf("missing diff for '%s'", file), err)
-			}
+			testutils.Contains(t, err.Error(), fmt.Sprintf("diff %s %s", file, file))
 		}
 	})
 
@@ -91,9 +79,8 @@ func TestDirs(t *testing.T) {
 
 		// Act
 		err := compare.Dirs(expected, actual)
+
 		// Assert
-		if err != nil {
-			t.Fatal(err)
-		}
+		testutils.NoError(t, err)
 	})
 }

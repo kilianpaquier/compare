@@ -1,13 +1,12 @@
 package compare_test
 
 import (
-	"errors"
 	"fmt"
 	"io/fs"
 	"path/filepath"
-	"strings"
 	"testing"
 
+	"github.com/kilianpaquier/compare/internal/testutils"
 	compare "github.com/kilianpaquier/compare/pkg"
 )
 
@@ -26,9 +25,7 @@ func TestFiles(t *testing.T) {
 				err := compare.Files(expected, actual)
 
 				// Assert
-				if !errors.Is(err, fs.ErrNotExist) {
-					t.Fatal(err)
-				}
+				testutils.ErrorIs(t, err, fs.ErrNotExist)
 			})
 		}
 	})
@@ -44,13 +41,9 @@ func TestFiles(t *testing.T) {
 
 		// Assert
 		ce := &compare.Error{}
-		if !errors.As(err, &ce) {
-			t.Fatal(err)
-		}
+		testutils.ErrorAs(testutils.Require(t), err, &ce)
 		// small verification, there's no need for more since comparison result is handled by Golang diff library
-		if !strings.Contains(ce.Error(), fmt.Sprintf("diff %s %s", expected, actual)) {
-			t.Fatal(err)
-		}
+		testutils.Contains(t, ce.Error(), fmt.Sprintf("diff %s %s", expected, actual))
 	})
 
 	t.Run("success", func(t *testing.T) {
@@ -61,11 +54,11 @@ func TestFiles(t *testing.T) {
 				expected := filepath.Join(testdata, "expected.txt")
 				actual := filepath.Join(testdata, "actual.txt")
 
-				// Act & Assert
+				// Act
 				err := compare.Files(expected, actual)
-				if err != nil {
-					t.Fatal(err)
-				}
+
+				// Assert
+				testutils.NoError(t, err)
 			})
 		}
 	})
