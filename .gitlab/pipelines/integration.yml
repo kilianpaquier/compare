@@ -6,20 +6,20 @@ include:
   # pre-commit template
   # https://gitlab.com/to-be-continuous/pre-commit
   - project: to-be-continuous/pre-commit
-    ref: 85ef9be998d1cbabe018eb1b293c09c0c07d448c # 1.4.1
+    ref: 781cb6e8a6a4009a4ca29357fd6aa1a81f9867cd # 1.4.2
     file: templates/gitlab-ci-pre-commit.yml
 
   # Go template
   # https://gitlab.com/to-be-continuous/golang
   - project: to-be-continuous/golang
-    ref: 156a4275a22b839532e8c6acb825b8cadc065103 # 4.15.1
+    ref: 13cde466644e49f8d07867d6a64efa89a61cc50c # 4.15.2
     file: templates/gitlab-ci-golang.yml
 
 variables:
   PRE_COMMIT_FILE: .pre-commit-config.yaml
 
   GO_CI_LINT_ARGS: --config=.golangci.yml --timeout=240s --allow-parallel-runners --output.checkstyle.path="reports/go-ci-lint.checkstyle.xml" --output.text.path=stdout
-  GO_CI_LINT_IMAGE: docker.io/golangci/golangci-lint:v2.7.2-alpine
+  GO_CI_LINT_IMAGE: docker.io/golangci/golangci-lint:v2.8.0-alpine
   GO_IMAGE: docker.io/library/golang:1.25.5
   GO_OUTDATED_DISABLED: "false" # https://github.com/psampaz/go-mod-outdated
   GO_SBOM_DISABLED: "true"

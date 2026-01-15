@@ -5,7 +5,7 @@ include:
   # semantic-release template
   # https://gitlab.com/to-be-continuous/semantic-release
   - project: to-be-continuous/semantic-release
-    ref: e8ff414e33e526b2b2117c599982f35b0c109fa9 # 4.0.2
+    ref: 2a2883ee09a0aae7d2dc5509ce17115554e553dd # 4.0.3
     file: templates/gitlab-ci-semrel.yml
 
 variables:
