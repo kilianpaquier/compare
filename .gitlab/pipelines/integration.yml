@@ -12,7 +12,7 @@ include:
   # Go template
   # https://gitlab.com/to-be-continuous/golang
   - project: to-be-continuous/golang
-    ref: 13cde466644e49f8d07867d6a64efa89a61cc50c # 4.15.2
+    ref: 473da325602b2a247fc6d880bc243cf6a42dbe0f # 4.15.3
     file: templates/gitlab-ci-golang.yml
 
 variables:
@@ -20,11 +20,11 @@ variables:
 
   GO_CI_LINT_ARGS: --config=.golangci.yml --timeout=240s --allow-parallel-runners --output.checkstyle.path="reports/go-ci-lint.checkstyle.xml" --output.text.path=stdout
   GO_CI_LINT_IMAGE: docker.io/golangci/golangci-lint:v2.8.0-alpine
-  GO_IMAGE: docker.io/library/golang:1.25.5
+  GO_IMAGE: docker.io/library/golang:1.25.6
   GO_OUTDATED_DISABLED: "false" # https://github.com/psampaz/go-mod-outdated
   GO_SBOM_DISABLED: "true"
   GO_TEST_FLAGS: -v -coverpkg=./... -covermode=count -timeout=30s
-  GO_TEST_IMAGE: docker.io/library/golang:1.25.5
+  GO_TEST_IMAGE: docker.io/library/golang:1.25.6
 
 go-build:
   rules:
