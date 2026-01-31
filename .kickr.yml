@@ -6,8 +6,6 @@ ci:
   options:
     - kickr
   release: {}
-dependencies:
-  manager: renovate
 license: mit
 maintainers:
   - name: u.kilianpaquier

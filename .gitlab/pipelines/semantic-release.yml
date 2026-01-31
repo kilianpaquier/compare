@@ -5,11 +5,12 @@ include:
   # semantic-release template
   # https://gitlab.com/to-be-continuous/semantic-release
   - project: to-be-continuous/semantic-release
-    ref: 2a2883ee09a0aae7d2dc5509ce17115554e553dd # 4.0.3
+    ref: b339fb11b538e51f6c67eb3eb1c755f5fa85b864 # 4.0.4
     file: templates/gitlab-ci-semrel.yml
 
 variables:
   ADAPTIVE_PIPELINE_DISABLED: "true"
+  VERSION: $SEMREL_INFO_NEXT_VERSION
 
   SEMREL_AUTO_RELEASE_ENABLED: false
   SEMREL_BRANCHES_REF: /^(alpha|beta|dev|develop|main|next|rc|staging|v[0-9]+(\.[0-9]+)?\.x)$/
@@ -46,11 +47,17 @@ workflow:
     # on production or integration branch(es)
     - if: '$CI_COMMIT_REF_NAME =~ $PROD_REF || $CI_COMMIT_REF_NAME =~ $INTEG_REF'
 
-semantic-release-info:
+.semrel-base:
   variables:
     GIT_DEPTH: "0"
     GITLAB_TOKEN: $RELEASE_TOKEN
-  after_script:
+
+semantic-release-info:
+  stage: build
+  variables:
+    SEMREL_DRY_RUN: "true"
+  script:
+    - !reference [semantic-release, script]
     - source "$SEMREL_CONFIG_DIR/semrel.out.env" && rm "$SEMREL_CONFIG_DIR/semrel.out.env"
     - >
       echo "BRANCH_SHA=$(echo "$CI_COMMIT_REF_NAME" | sha256sum | cut -c -8)" >> "$SEMREL_CONFIG_DIR/semrel.out.env"
@@ -68,6 +75,3 @@ semantic-release-info:
 
 semantic-release:
   interruptible: false
-  variables:
-    GIT_DEPTH: "0"
-    GITLAB_TOKEN: $RELEASE_TOKEN
