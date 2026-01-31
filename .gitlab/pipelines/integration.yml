@@ -18,5 +18,7 @@ include:
 variables:
   PRE_COMMIT_FILE: .pre-commit-config.yaml
 
+  GO_BUILD_MODE: modules
   GO_CI_LINT_ARGS: --config=.golangci.yml --timeout=240s --allow-parallel-runners --output.checkstyle.path="reports/go-ci-lint.checkstyle.xml" --output.text.path=stdout
+  GO_SBOM_OPTS: -licenses -assert-licenses
   GO_TEST_FLAGS: -v -coverpkg=./... -covermode=count -timeout=30s
