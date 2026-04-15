@@ -45,3 +45,8 @@ semantic-release-info:
 
 semantic-release:
   interruptible: false
+
+semantic-release:dry-run:
+  extends: semantic-release
+  variables:
+    SEMREL_DRY_RUN: "true"
