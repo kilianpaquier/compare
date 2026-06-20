@@ -1,3 +1,27 @@
+## [1.1.2](https://gitlab.com/kilianpaquier/compare/compare/v1.1.1...v1.1.2) (2026-06-20)
+
+### Chores
+
+* **deps:** update module github.com/rogpeppe/go-internal to v1.15.0 ([90ace17](https://gitlab.com/kilianpaquier/compare/commit/90ace17252cfaa6ac4be5f2173e9354ddc2c1eef))
+
+### Continuous Integration
+
+* **deps:** update dependency go to v1.25.7 ([0f6e7a7](https://gitlab.com/kilianpaquier/compare/commit/0f6e7a7c020a69d11e70213d5adc8f9641b0b82c))
+* **deps:** update dependency go to v1.26.0 ([29300c2](https://gitlab.com/kilianpaquier/compare/commit/29300c21bbdae8ebfafd291a454bfa33707d88f4))
+* **deps:** update dependency go to v1.26.1 ([30a2d46](https://gitlab.com/kilianpaquier/compare/commit/30a2d460d9f42d5a74232a0bb67dde8a2ca01f07))
+* **deps:** update dependency go to v1.26.2 ([db3c7d0](https://gitlab.com/kilianpaquier/compare/commit/db3c7d00d57ab649ce7a9b12b1cd4022ff17cca6))
+* **deps:** update go toolchain dependency to v1.26.4 ([fc4e187](https://gitlab.com/kilianpaquier/compare/commit/fc4e187832d2722fa77ed5a07c72df2c7c4446f5))
+* **deps:** update go toolchain directive to v1.26.3 ([37b4024](https://gitlab.com/kilianpaquier/compare/commit/37b4024017eb5fc8d4cbc496d84b8e4648d67d71))
+* **layout:** regenerate kickr layout ([5aeac00](https://gitlab.com/kilianpaquier/compare/commit/5aeac0077b25599e0c6ba67edaa26a12bf936ae0))
+* **layout:** regenerate kickr layout ([a9415cf](https://gitlab.com/kilianpaquier/compare/commit/a9415cf841dc1206fb6ad82362ff4b0441829dac))
+* **layout:** regenerate kickr layout ([70b8ec2](https://gitlab.com/kilianpaquier/compare/commit/70b8ec2bd77d863595540cfc70eb7b12c241992f))
+* **layout:** regenerate kickr layout ([19d5717](https://gitlab.com/kilianpaquier/compare/commit/19d57176864e9bc0020ee5b46af8e9056f5c388e))
+* **layout:** regenerate kickr layout ([7333a30](https://gitlab.com/kilianpaquier/compare/commit/7333a30730496201b3a75215c40ccfdcd7ec0df7))
+* **layout:** regenerate kickr layout ([9250cc3](https://gitlab.com/kilianpaquier/compare/commit/9250cc3d30d3b7669233602c1818a72ccd1b3ce8))
+* **layout:** regenerate kickr layout ([979e0a0](https://gitlab.com/kilianpaquier/compare/commit/979e0a0fe8fa0dc3bc94667f3f9bd9869278dbdb))
+* remove sbom jobs deactivation ([88947cc](https://gitlab.com/kilianpaquier/compare/commit/88947ccd6e0626ec2a32b4afecdb66eaecca0d82))
+* **sbom:** fix invalid options ([f1f276b](https://gitlab.com/kilianpaquier/compare/commit/f1f276bbdb1e60d698506a052de49011361adbbf))
+
 ## [1.1.1](https://gitlab.com/kilianpaquier/compare/compare/v1.1.0...v1.1.1) (2026-01-20)
 
 ### Chores
