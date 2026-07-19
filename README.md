@@ -17,12 +17,12 @@
 ## How to use ?
 
 ```sh
-go get github.com/kilianpaquier/compare
+go get -u github.com/kilianpaquier/compare@latest
 ```
 
 ## Documentation
 
-Can be found here in a better format: https://pkg.go.dev/github.com/kilianpaquier/compare.
+Can be found here in a better format: <https://pkg.go.dev/github.com/kilianpaquier/compare/pkg>.
 
 ```go
 /*
