@@ -2,10 +2,12 @@
 
 # Various build / compile directories
 dist/
+logs/
 reports/
+tmp/
 
-# Created by https://www.toptal.com/developers/gitignore/api/go,dotenv
-# Edit at https://www.toptal.com/developers/gitignore?templates=go,dotenv
+# Created by https://www.toptal.com/developers/gitignore/api/dotenv,go
+# Edit at https://www.toptal.com/developers/gitignore?templates=dotenv,go
 
 ### dotenv ###
 .env
@@ -33,4 +35,4 @@ reports/
 # Go workspace file
 go.work
 
-# End of https://www.toptal.com/developers/gitignore/api/go,dotenv
+# End of https://www.toptal.com/developers/gitignore/api/dotenv,go
