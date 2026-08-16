@@ -1,3 +1,21 @@
+## [1.1.3](https://gitlab.com/kilianpaquier/compare/compare/v1.1.2...v1.1.3) (2026-08-16)
+
+### Documentation
+
+* **readme:** update link to pkg.go.dev to point to `pkg` package directly ([3ffad5f](https://gitlab.com/kilianpaquier/compare/commit/3ffad5fd28776ec450455d87ab3191202a3092b4))
+
+### Chores
+
+* **deps:** update module github.com/rogpeppe/go-internal to v1.16.0 ([81a9c14](https://gitlab.com/kilianpaquier/compare/commit/81a9c14ef7bdd897c7cef63784e866f21fed6340))
+* **layout:** regenerate kickr layout ([02740c0](https://gitlab.com/kilianpaquier/compare/commit/02740c088d874633caece0f820a9946aa09a6afb))
+
+### Continuous Integration
+
+* **deps:** update go toolchain directive to v1.26.5 ([7bb6228](https://gitlab.com/kilianpaquier/compare/commit/7bb6228132da65e4432c256ca1e1952e35986f18))
+* **layout:** regenerate kickr layout ([e95bc00](https://gitlab.com/kilianpaquier/compare/commit/e95bc00c8ff99cd79633a7c552ec5fd75a5df413))
+* **layout:** regenerate kickr layout ([03f016f](https://gitlab.com/kilianpaquier/compare/commit/03f016fb75a9feb1f58d1e60b724a99f2724b73a))
+* **layout:** regenerate kickr layout ([af23000](https://gitlab.com/kilianpaquier/compare/commit/af2300077fb71a7e4d7f8b87c2de0fadcbf06d79))
+
 ## [1.1.2](https://gitlab.com/kilianpaquier/compare/compare/v1.1.1...v1.1.2) (2026-06-20)
 
 ### Chores
