@@ -6,11 +6,11 @@ include:
   # https://gitlab.com/to-be-continuous/semantic-release
   - remote: https://gitlab.com/to-be-continuous/semantic-release/-/raw/f7c8ec592083596d1b392778582f160c1a2a0379/templates/gitlab-ci-semrel.yml # 4.3.0
     inputs:
-      auto-release-enabled: "false"
+      auto-release-enabled: false
       branches-ref: /^(alpha|beta|dev|develop|main|next|rc|staging|v[0-9]+(\.[0-9]+)?\.x)$/
       hooks-dir: scripts
       info-on: all
-      release-disabled: "false"
+      release-disabled: false
       required-plugins-file: .gitlab/semrel-plugins.txt
       tag-format: v$${version}
 
@@ -20,7 +20,6 @@ include:
     GITLAB_TOKEN: $RELEASE_TOKEN
 
 semantic-release-info:
-  stage: build
   variables:
     SEMREL_DRY_RUN: "true"
   script:

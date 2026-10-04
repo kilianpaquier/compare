@@ -18,5 +18,31 @@ include:
       sbom-opts: -licenses -assert-licenses
       test-flags: -v -coverpkg=./... -covermode=count -timeout=30s
 
+  # Plumber template
+  # https://gitlab.com/getplumber/plumber
+  - remote: https://gitlab.com/getplumber/plumber/-/raw/c342d11f758f4386d9d2c42333cd1c4ae2d5448a/templates/plumber.yml # v0.5.16
+    inputs:
+      allow_failure: true
+      badge: false
+      config_file: .gitlab/plumber.yml
+      gitlab_token: $PLUMBER_GITLAB_TOKEN
+      image: $PLUMBER_IMAGE
+      mr_comment: false
+      score_point: true
+      score_push: true
+
+go-build-test:
+  needs: []
+
+go-ci-lint:
+  needs: []
+
 go-govulncheck:
   allow_failure: true
+
+go-mod-outdated:
+  rules: [when: never]
+
+plumber:
+  rules:
+    - if: '$CI_COMMIT_REF_NAME =~ $INTEG_REF || $CI_COMMIT_REF_NAME =~ $PROD_REF'
