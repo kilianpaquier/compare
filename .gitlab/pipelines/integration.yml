@@ -5,7 +5,7 @@ include:
 
   # pre-commit template
   # https://gitlab.com/to-be-continuous/pre-commit
-  - remote: https://gitlab.com/to-be-continuous/pre-commit/-/raw/545565bb99ba3b932c9f1f244d446d5ff3f77b40/templates/gitlab-ci-pre-commit.yml # 1.6.0
+  - remote: https://gitlab.com/to-be-continuous/pre-commit/-/raw/50e22ece81358c673c8d33b79185d5563bdc1d39/templates/gitlab-ci-pre-commit.yml # 1.8.0
     inputs:
       pre-commit-file: .pre-commit-config.yaml
 
@@ -18,19 +18,6 @@ include:
       sbom-opts: -licenses -assert-licenses
       test-flags: -v -coverpkg=./... -covermode=count -timeout=30s
 
-  # Plumber template
-  # https://gitlab.com/getplumber/plumber
-  - remote: https://gitlab.com/getplumber/plumber/-/raw/c342d11f758f4386d9d2c42333cd1c4ae2d5448a/templates/plumber.yml # v0.5.16
-    inputs:
-      allow_failure: true
-      badge: false
-      config_file: .gitlab/plumber.yml
-      gitlab_token: $PLUMBER_GITLAB_TOKEN
-      image: $PLUMBER_IMAGE
-      mr_comment: false
-      score_point: true
-      score_push: true
-
 go-build-test:
   needs: []
 
@@ -42,7 +29,3 @@ go-govulncheck:
 
 go-mod-outdated:
   rules: [when: never]
-
-plumber:
-  rules:
-    - if: '$CI_COMMIT_REF_NAME =~ $INTEG_REF || $CI_COMMIT_REF_NAME =~ $PROD_REF'

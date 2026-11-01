@@ -24,6 +24,9 @@ gitlab:
         # - unstable
       # Takes precedence over the tags list (e.g. alpine@sha256:...).
       containerImagesMustBePinnedByDigest: true
+      # Registry and image name without tag, exempted only when its tag is in the tags list.
+      # exemptImages:
+      #   - docker.io/library/alpine
 
     containerImageMustComeFromAuthorizedSources:
       enabled: true
@@ -36,108 +39,152 @@ gitlab:
         - $CI_REGISTRY_IMAGE:*
         - $CI_REGISTRY_IMAGE/*
         - $CI_REGISTRY/*
-        - docker.io/alpine:*
-        - docker.io/alpine/*
-        - docker.io/amazon/*
-        - docker.io/amd64/*
-        - docker.io/anchore/*
-        - docker.io/aquasec/*
-        - docker.io/arm32v6/*
-        - docker.io/arm32v7/*
-        - docker.io/arm64v8/*
-        - docker.io/bats/*
-        - docker.io/bitnami/*
-        - docker.io/bridgecrew/*
-        - docker.io/bufbuild/*
-        - docker.io/cimg/*
-        - docker.io/circleci/*
-        - docker.io/continuumio/*
-        - docker.io/curlimages/*
-        - docker.io/cypress/*
-        - docker.io/cytopia/*
-        - docker.io/davidanson/*
-        - docker.io/debian:*
-        - docker.io/docker:*
-        - docker.io/fsfe/*
-        - docker.io/gentoo/*
+        - docker.io/alpine/ansible:*
+        - docker.io/alpine/curl:*
+        - docker.io/alpine/git:*
+        - docker.io/alpine/helm:*
+        - docker.io/alpine/k8s:*
+        - docker.io/alpine/kubectl:*
+        - docker.io/alpine/openssl:*
+        - docker.io/alpine/psql:*
+        - docker.io/alpine/terragrunt:*
+        - docker.io/amazon/aws-cli:*
+        - docker.io/amazon/aws-lambda-dotnet:*
+        - docker.io/amazon/aws-lambda-java:*
+        - docker.io/amazon/aws-lambda-nodejs:*
+        - docker.io/amazon/aws-lambda-provided:*
+        - docker.io/amazon/aws-lambda-python:*
+        - docker.io/amazon/aws-lambda-ruby:*
+        - docker.io/amazon/dynamodb-local:*
+        - docker.io/anchore/grype:*
+        - docker.io/anchore/syft:*
+        - docker.io/aquasec/tfsec:*
+        - docker.io/aquasec/tfsec-alpine:*
+        - docker.io/aquasec/tfsec-ci:*
+        - docker.io/aquasec/trivy:*
+        - docker.io/bats/bats:*
+        - docker.io/bridgecrew/checkov:*
+        - docker.io/bufbuild/buf:*
+        - docker.io/continuumio/anaconda3:*
+        - docker.io/continuumio/miniconda3:*
+        - docker.io/curlimages/curl:*
+        - docker.io/cypress/base:*
+        - docker.io/cypress/browsers:*
+        - docker.io/cypress/factory:*
+        - docker.io/cypress/included:*
+        - docker.io/cytopia/ansible:*
+        - docker.io/cytopia/yamllint:*
+        - docker.io/davidanson/markdownlint-cli2:*
+        - docker.io/davidanson/markdownlint-cli2-rules:*
+        - docker.io/fsfe/reuse:*
         - docker.io/getplumber/plumber:*
-        - docker.io/getplumber/plumber@sha256:*
-        - docker.io/getsentry/*
-        - docker.io/gitlab/*
-        - docker.io/gittools/*
-        - docker.io/golang:*
-        - docker.io/golangci/*
-        - docker.io/google/*
-        - docker.io/hadolint/*
-        - docker.io/hashicorp/*
-        - docker.io/hugomods/*
-        - docker.io/i386/*
-        - docker.io/infracost/*
-        - docker.io/intel/*
-        - docker.io/jdkato/*
-        - docker.io/koalaman/*
+        - docker.io/getsentry/sentry-cli:*
+        - docker.io/gittools/gitversion:*
+        - docker.io/golangci/golangci-lint:*
+        - docker.io/hadolint/hadolint:*
+        - docker.io/hashicorp/consul:*
+        - docker.io/hashicorp/nomad:*
+        - docker.io/hashicorp/packer:*
+        - docker.io/hashicorp/terraform:*
+        - docker.io/hashicorp/tfci:*
+        - docker.io/hashicorp/vault:*
+        - docker.io/hugomods/hugo:*
+        - docker.io/infracost/infracost:*
+        - docker.io/jdkato/vale:*
+        - docker.io/koalaman/shellcheck:*
+        - docker.io/koalaman/shellcheck-alpine:*
+        # `docker.io/library/<name>` keeps its `library/` prefix, which trustDockerHubOfficialImages doesn't cover.
         - docker.io/library/*
-        - docker.io/lycheeverse/*
-        - docker.io/nixos/*
-        - docker.io/node:*
-        - docker.io/nvidia/*
-        - docker.io/opensuse/*
-        - docker.io/oven/*
-        - docker.io/pandoc/*
-        - docker.io/ppc64le/*
-        - docker.io/python:*
-        - docker.io/redhat/*
-        - docker.io/renovate/*
-        - docker.io/riscv64/*
-        - docker.io/rocm/*
-        - docker.io/rust:*
-        - docker.io/rustlang/*
-        - docker.io/s390x/*
-        - docker.io/semgrep/*
-        - docker.io/snapcore/*
-        - docker.io/sonarsource/*
-        - docker.io/ubuntu:*
-        - docker.io/zegl/*
-        - docker.io/zricethezav/*
-        - gcr.io/go-containerregistry/*
-        - gcr.io/google.com/cloudsdktool/*
-        - gcr.io/kaniko-project/*
-        - gcr.io/oss-fuzz-base/*
+        - docker.io/lycheeverse/lychee:*
+        - docker.io/nixos/nix:*
+        - docker.io/opensuse/leap:*
+        - docker.io/opensuse/tumbleweed:*
+        - docker.io/oven/bun:*
+        - docker.io/pandoc/core:*
+        - docker.io/pandoc/extra:*
+        - docker.io/pandoc/latex:*
+        - docker.io/pandoc/minimal:*
+        - docker.io/pandoc/typst:*
+        - docker.io/redhat/ubi10:*
+        - docker.io/redhat/ubi10-micro:*
+        - docker.io/redhat/ubi10-minimal:*
+        - docker.io/redhat/ubi8:*
+        - docker.io/redhat/ubi8-minimal:*
+        - docker.io/redhat/ubi9:*
+        - docker.io/redhat/ubi9-micro:*
+        - docker.io/redhat/ubi9-minimal:*
+        - docker.io/renovate/renovate:*
+        - docker.io/rustlang/rust:*
+        - docker.io/semgrep/semgrep:*
+        - docker.io/sonarsource/sonar-scanner-cli:*
+        - docker.io/sonarsource/sonarcloud-quality-gate:*
+        - docker.io/sonarsource/sonarcloud-scan:*
+        - docker.io/sonarsource/sonarqube-quality-gate:*
+        - docker.io/sonarsource/sonarqube-scan:*
+        - docker.io/zegl/kube-score:*
+        - docker.io/zricethezav/gitleaks:*
+        - gcr.io/go-containerregistry/crane:*
+        - gcr.io/go-containerregistry/gcrane:*
+        - gcr.io/google.com/cloudsdktool/google-cloud-cli:*
         - getplumber/plumber:*
-        - ghcr.io/astral-sh/*
-        - ghcr.io/canonical/*
-        - ghcr.io/cirruslabs/*
-        - ghcr.io/containerbase/*
-        - ghcr.io/gohugoio/*
-        - ghcr.io/goreleaser/*
-        - ghcr.io/graalvm/*
-        - ghcr.io/igorshubovych/*
-        - ghcr.io/jdx/*
-        - ghcr.io/opentofu/*
-        - ghcr.io/prefix-dev/*
-        - ghcr.io/renovatebot/*
-        - ghcr.io/streetsidesoftware/*
-        - ghcr.io/tcort/*
-        - ghcr.io/terraform-linters/*
+        - ghcr.io/astral-sh/ruff:*
+        - ghcr.io/astral-sh/uv:*
+        - ghcr.io/cirruslabs/android-sdk:*
+        - ghcr.io/cirruslabs/flutter:*
+        - ghcr.io/containerbase/base:*
+        - ghcr.io/gohugoio/hugo:*
+        - ghcr.io/goreleaser/goreleaser:*
+        - ghcr.io/goreleaser/goreleaser-cross:*
+        - ghcr.io/goreleaser/goreleaser-cross-pro:*
+        - ghcr.io/goreleaser/goreleaser-pro:*
+        - ghcr.io/goreleaser/nfpm:*
+        - ghcr.io/graalvm/graalvm-community:*
+        - ghcr.io/graalvm/jdk:*
+        - ghcr.io/graalvm/jdk-community:*
+        - ghcr.io/graalvm/native-image:*
+        - ghcr.io/graalvm/native-image-community:*
+        - ghcr.io/igorshubovych/markdownlint-cli:*
+        - ghcr.io/jdx/mise:*
+        - ghcr.io/opentofu/opentofu:*
+        - ghcr.io/oras-project/oras:*
+        - ghcr.io/prefix-dev/pixi:*
+        - ghcr.io/renovatebot/renovate:*
+        - ghcr.io/streetsidesoftware/cspell:*
+        - ghcr.io/tcort/markdown-link-check:*
+        - ghcr.io/terraform-linters/tflint:*
+        - ghcr.io/terraform-linters/tflint-bundle:*
+        - ghcr.io/yannh/kubeconform:*
         - library/*
-        - mcr.microsoft.com/*
-        - nvcr.io/nvidia/*
-        - opensuse/*
-        - quay.io/buildah/*
-        - quay.io/centos/*
-        - quay.io/containers/*
-        - quay.io/gnome_infrastructure/*
-        - quay.io/podman/*
-        - quay.io/pypa/*
-        - quay.io/terraform-docs/*
-        - redhat/*
-        - registry.fedoraproject.org/*
-        - registry.gitlab.com/gitlab-org/*
-        - registry.gitlab.com/pipeline-components/*
+        - mcr.microsoft.com/azure-cli:*
+        - mcr.microsoft.com/azure-powershell:*
+        - mcr.microsoft.com/azurelinux/base/core:*
+        - mcr.microsoft.com/dotnet/aspnet:*
+        - mcr.microsoft.com/dotnet/runtime:*
+        - mcr.microsoft.com/dotnet/runtime-deps:*
+        - mcr.microsoft.com/dotnet/sdk:*
+        - mcr.microsoft.com/openjdk/jdk:*
+        - mcr.microsoft.com/playwright:*
+        - mcr.microsoft.com/playwright/dotnet:*
+        - mcr.microsoft.com/playwright/java:*
+        - mcr.microsoft.com/playwright/python:*
+        - mcr.microsoft.com/powershell:*
+        - quay.io/buildah/stable:*
+        - quay.io/centos/centos:*
+        - quay.io/containers/aio:*
+        - quay.io/containers/buildah:*
+        - quay.io/containers/podman:*
+        - quay.io/containers/skopeo:*
+        - quay.io/podman/stable:*
+        - quay.io/pypa/manylinux*
+        - quay.io/pypa/musllinux*
+        - quay.io/terraform-docs/terraform-docs:*
+        - registry.fedoraproject.org/fedora:*
+        - registry.fedoraproject.org/fedora-minimal:*
+        - registry.gitlab.com/gitlab-org/cli:*
+        - registry.gitlab.com/gitlab-org/release-cli:*
         - registry.gitlab.com/security-products/*
-        - registry.gitlab.com/to-be-continuous/*
-        - registry.hub.docker.com/library/*
-        - registry.suse.com/*
+        - registry.gitlab.com/to-be-continuous/tools/*
+        - registry.suse.com/bci/*
 
     # Flags project CI/CD variables not protected.
     # Needs a GitLab API token with variables read access, reports not-evaluable otherwise.
@@ -199,7 +246,7 @@ gitlab:
       # printingMergeRequestLinkEnabled: true
       removeSourceBranchAfterMerge: true
 
-    ## Requires the project to link a security policy project, optionally a specific one (the ID wins if both are set).
+    # Requires the project to link a security policy project, optionally a specific one (the ID wins if both are set).
     # Ultimate only (fires on lower tiers).
     projectMustHaveSecurityPolicySource:
       enabled: false
@@ -251,6 +298,24 @@ gitlab:
       enabled: true
       # required: templates/go/go AND templates/trivy/trivy AND templates/iso27001/iso27001
       requiredGroups: []
+
+    # Flags `include: component:` sources not trusted below (`remote:` and `project:` includes aren't checked).
+    componentMustComeFromAuthorizedSources:
+      enabled: true
+      trustSameGroupComponents: true
+      # Ignored on gitlab.com.
+      trustSameInstanceComponents: true
+      trustGitlabOfficialComponents: true # gitlab.com/components/* and gitlab.com/gitlab-org/*
+      trustedComponents:
+        - gitlab.com/getplumber/*
+        - gitlab.com/to-be-continuous/*
+
+    # Flags `run:` step `func:` references (GitLab CI Functions) not trusted below.
+    functionMustComeFromAuthorizedSources:
+      enabled: true
+      trustSameGroupFunctions: true
+      # The runner doesn't expand $VAR in `func:` references, list literal hosts and paths.
+      trustedFunctions: []
 
     # Flags debug variables set to "true", which print every environment variable (secrets included) in job logs.
     pipelineMustNotEnableDebugTrace:
